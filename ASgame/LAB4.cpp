@@ -33,7 +33,7 @@ int main()
 
 			fflush(stdin);
 		}
-		Sleep(100);
+		Sleep(500);
 	} while (ch != 'x');
 	printf("%d", x);
 	return 0;
