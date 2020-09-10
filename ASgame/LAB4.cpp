@@ -6,7 +6,7 @@ void erase_ship(int x, int y)
 {
 	COORD c = { x,y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
-	printf("       ");
+	printf("     ");
 }
 
 void draw_ship(int x,int y)
@@ -34,13 +34,11 @@ void setcolor(int fg, int bg)
 int main()
 {
 	setcursor(0);
-	for (int i = 1; i <= 1600; i++)
+	setcolor(2, 4);
+	for (int i = 1; i < 1680; i++)
 	{
-		setcolor(2,4 );
-		if (i%80==0)
-		{
-			printf("\n");
-		}
+		draw_ship(i % 76,i/80);
+		erase_ship(i%76, i/80);
 	}
 	char ch = ' ';
 	int x = 38, y = 20;
@@ -52,12 +50,12 @@ int main()
 			ch = _getch();
 			if (ch == 'a' && x!=0) { erase_ship(x, y); draw_ship(--x, y); }
 			if (ch == 'd' && x != 75) { erase_ship(x, y); draw_ship(++x, y); }
-			if (ch == 'w') { erase_ship(x, y); draw_ship(x, --y); }
+			if (ch == 'w' && y!=0) { erase_ship(x, y); draw_ship(x, --y); }
 			if (ch == 's') { erase_ship(x, y); draw_ship(x, ++y); }
 
 			fflush(stdin);
 		}
-		Sleep(500);
+		Sleep(100);
 	} while (ch != 'x');
 	return 0;
 }
