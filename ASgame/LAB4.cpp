@@ -35,11 +35,6 @@ int main()
 {
 	setcursor(0);
 	setcolor(2, 4);
-	for (int i = 1; i < 1680; i++)
-	{
-		draw_ship(i % 76,i/80);
-		erase_ship(i%76, i/80);
-	}
 	char ch = ' ';
 	int x = 38, y = 20;
 	draw_ship(x, y);
